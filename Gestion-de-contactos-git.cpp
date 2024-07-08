@@ -52,6 +52,9 @@ void agregarContactos(contactoEmail contactos[], int &cantidadContactos){
  	cin>>cont.nacionalidad ; 
  	cout<<"\n"; 
 	
+	contactos[cantidadContactos] = cont;
+	cantidadContactos++; 
+	
 	cout<<"CONTACTO GUARDADO SATISFACTORIAMENTE!\n"; 
 	
 }
@@ -73,12 +76,31 @@ void eliminarContactos(contactoEmail contactos[], int &cantidadContactos, int in
 	}
 }
 
+void mostrarContactos(contactoEmail contactos[], int cantidadContactos){
+	if(cantidadContactos == 0){
+		cout<<"\nNingun contacto por mostrar. "<<endl;
+	}
+	else{
+	   for(int i=0; i<cantidadContactos; ++i){
+	   	cout<<"Contacto: "<<i+1<<endl; 
+	   	cout<<"Nombres completos: "<<contactos[i].nombrescompletos<<endl;
+	   	cout<<"Sexo: "<<contactos[i].sexo<<endl; 
+	   	cout<<"Edad: "<<contactos[i].edad<<endl; 
+	   	cout<<"Telefono: "<<contactos[i].telefono<<endl; 
+	   	cout<<"Email: "<<contactos[i].email<<endl; 
+	   	cout<<"Nacionalidad: "<<contactos[i].nacionalidad<<endl; 
+	   	cout<<"\n"; 
+	   }
+	}
+}
+
 int main(){
 	int opcion;
 	contactoEmail contactos[limite_contactos]; 
 	int cantidadContactos=0; 
 	
-	do{
+	do{		
+			cout<<"\n"; 
 			cout<<"-------------------------------------"<<endl; 
 			cout<<"---------------MENU------------------"<<endl; 
 			cout<<"-------------------------------------"<<endl; 
@@ -95,7 +117,6 @@ int main(){
   	   		switch(opcion){
   			     case 1: 
 				    agregarContactos(contactos, cantidadContactos);    			  	 
-			  
 				 	default : break;  
 				 	
 		 		 case 2: 
@@ -105,9 +126,12 @@ int main(){
 		 	        cin>>indice; 
 		 	        
 		    		eliminarContactos(contactos, cantidadContactos, indice); 
-  				 // case 3: 
+  				 case 3:
+				    mostrarContactos(contactos, cantidadContactos);  
+		    	 
   	   		}
   	   		
+   		
 	}while(opcion != 5); 
 	
 	
