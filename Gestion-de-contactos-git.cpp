@@ -60,6 +60,11 @@ void agregarContactos(contactoEmail contactos[], int &cantidadContactos){
 }
 
 void eliminarContactos(contactoEmail contactos[], int &cantidadContactos, int indice){
+	
+	if(cantidadContactos==0){
+		cout<<"No se ha registrado ningun contacto hasta el momento. "; 
+	}
+	
 	if(indice >= 0 && indice < limite_contactos){
 		for(int i=indice; i < cantidadContactos - 1; ++i){
 			contactos[i]=contactos[i+1]; 
@@ -82,7 +87,7 @@ void mostrarContactos(contactoEmail contactos[], int cantidadContactos){
 	}
 	else{
 	   for(int i=0; i<cantidadContactos; ++i){
-	   	cout<<"Contacto: "<<i+1<<endl; 
+	   	cout<<"Contacto: "<<i+1<<" | "<<" -> "<<"INDICE: "<< i <<endl; 
 	   	cout<<"Nombres completos: "<<contactos[i].nombrescompletos<<endl;
 	   	cout<<"Sexo: "<<contactos[i].sexo<<endl; 
 	   	cout<<"Edad: "<<contactos[i].edad<<endl; 
@@ -92,6 +97,10 @@ void mostrarContactos(contactoEmail contactos[], int cantidadContactos){
 	   	cout<<"\n"; 
 	   }
 	}
+}
+
+void ordenServidor(contactoEmail ){
+	
 }
 
 int main(){
@@ -117,17 +126,23 @@ int main(){
   	   		switch(opcion){
   			     case 1: 
 				    agregarContactos(contactos, cantidadContactos);    			  	 
-				 	default : break;  
+				    break;  
 				 	
 		 		 case 2: 
 		 	        int indice; 
 		 	        cout<<"Ingrese el indice del contacto a eliminar."<<endl;
 				 	cout<<"Tenga en cuenta que los indices inician desde el 0. Indice: "; 
 		 	        cin>>indice; 
-		 	        
 		    		eliminarContactos(contactos, cantidadContactos, indice); 
+		    		break; 
+		    		
   				 case 3:
 				    mostrarContactos(contactos, cantidadContactos);  
+				    break; 
+				    
+			     case 4: 
+			     	  
+   	  			    break; 
 		    	 
   	   		}
   	   		
